@@ -1,11 +1,9 @@
 FROM weaveworks/weave-npc:2.8.1
 LABEL maintainer="Ronan Le Meillat <ronan.le_meillat@highcanfly.club>" 
-WORKDIR /home/weave
+LABEL maintainer="Ronan Le Meillat <ronan.le_meillat@highcanfly.club>" 
 RUN cd /sbin && \
-    rm -f iptables ip6tables iptables-save iptables-restore && \
-    ln -f -s xtables-nft-multi iptables && \
-    ln -f -s xtables-nft-multi ip6tables && \
-    ln -f -s xtables-nft-multi iptables-save && \
-    ln -f -s xtables-nft-multi iptables-restore
-
-ENTRYPOINT ["/usr/bin/launch.sh"]
+    rm -f /sbin/iptables /sbin/ip6tables /sbin/iptables-save /sbin/iptables-restore &&\
+    ln -f -s xtables-nft-multi /sbin/iptables && \
+    ln -f -s xtables-nft-multi /sbin/ip6tables && \
+    ln -f -s xtables-nft-multi /sbin/iptables-save && \
+    ln -f -s xtables-nft-multi /sbin/iptables-restore
