@@ -4,6 +4,7 @@ FROM alpine:latest
 LABEL maintainer="Ronan Le Meillat <ronan.le_meillat@highcanfly.club>" 
 COPY --from=builder /usr/bin/weave-npc /usr/bin/weave-npc 
 COPY --from=builder /usr/bin/launch.sh /usr/bin/launch.sh
+COPY --from=builder /etc/ulogd.conf /etc/ulogd.conf
 RUN apk add --update \
     iptables \
     ipset \
